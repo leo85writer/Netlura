@@ -1,0 +1,113 @@
+<!-- Declara o tipo de documento como HTML5 -->
+<!DOCTYPE html>
+<!-- Elemento raiz da página, definido como português do Brasil -->
+<html lang="pt-BR">
+<!-- Cabeçalho com metadados e recursos da página -->
+<head>
+    <!-- Define codificação UTF-8 para suportar caracteres especiais -->
+    <meta charset="UTF-8">
+    <!-- Configura a viewport para layout responsivo em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Descrição da página para SEO e prévias em buscadores -->
+    <meta name="description" content="Selecione um perfil para começar a assistir na Netflix">
+    <!-- Título exibido na aba do navegador -->
+    <title>Netflix - Selecionar Perfil</title>
+    <!-- Importa o arquivo de estilos CSS da página -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- Corpo visível da página -->
+<body>
+    <!-- Cabeçalho principal do conteúdo -->
+    <header>
+        <!-- Ícone de alternância de tema (Dark/Light Mode) -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Ativar modo claro">☀️</button>
+        <!-- Título principal mostrado ao usuário -->
+        <h1>Quem está assistindo?</h1>
+    </header>
+
+    <!-- Conteúdo principal da tela -->
+    <main>
+        <!-- Seção que agrupa os perfis, com rótulo de acessibilidade -->
+        <section class="profiles" aria-label="Perfis de usuário">
+            <!-- Cartão do perfil da Ana -->
+            <article class="profile">
+                <!-- Link para a página de filmes com descrição acessível -->
+                <a class="profile-link" href="catalogo/catalogo.html" aria-label="Entrar com o perfil Ana e ver a lista de filmes">
+                    <!-- Agrupa imagem e legenda do perfil -->
+                    <figure>
+                    <!-- Imagem do perfil da Ana -->
+                    <img src="/assets/Ana.png" alt="Perfil de usuário">
+                    <!-- Nome exibido abaixo da imagem -->
+                    <figcaption>Ana</figcaption>  
+                    </figure>
+                </a>
+            </article>
+            <!-- Cartão do perfil da Alice -->
+            <article class="profile">
+                <!-- Link para a página de filmes com descrição acessível -->
+                <a class="profile-link" href="catalogo/catalogo.html" aria-label="Entrar com o perfil Alice e ver a lista de filmes">
+                    <!-- Agrupa imagem e legenda do perfil -->
+                    <figure>
+                    <!-- Imagem do perfil da Alice -->
+                    <img src="/assets/Alice.png" alt="Perfil de usuário">
+                    <!-- Nome exibido abaixo da imagem -->
+                    <figcaption>Alice</figcaption>
+                    </figure>
+                </a>
+            </article>
+            <!-- Cartão do perfil da Mãe -->
+            <article class="profile">
+                <!-- Link para a página de filmes com descrição acessível -->
+                <a class="profile-link" href="catalogo/catalogo.html" aria-label="Entrar com o perfil Mãe e ver a lista de filmes">
+                    <!-- Agrupa imagem e legenda do perfil -->
+                    <figure>
+                    <!-- Imagem do perfil da Mãe -->
+                    <img src="/assets/Mãe.png" alt="Perfil de usuário">
+                    <!-- Nome exibido abaixo da imagem -->
+                    <figcaption>Mãe</figcaption>
+                    </figure>
+                </a>
+            </article>
+            <!-- Cartão do perfil do Pai -->
+            <article class="profile">
+                <!-- Link para a página de filmes com descrição acessível -->
+                <a class="profile-link" href="catalogo/catalogo.html" aria-label="Entrar com o perfil Pai e ver a lista de filmes">
+                    <!-- Agrupa imagem e legenda do perfil -->
+                    <figure>
+                    <!-- Imagem do perfil do Pai -->
+                    <img src="/assets/Pai.png" alt="Perfil de usuário">
+                    <!-- Nome exibido abaixo da imagem -->
+                    <figcaption>Pai</figcaption>
+                    </figure>
+                </a>
+            </article>
+        </section>
+    </main>
+
+    <!-- Script para armazenar perfil ativo no localStorage -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const profileCards = document.querySelectorAll('.profile');
+
+            profileCards.forEach(card => {
+                const link = card.querySelector('.profile-link');
+                const nameEl = card.querySelector('figcaption');
+                const imgEl = card.querySelector('img');
+
+                if (!link || !nameEl || !imgEl) return;
+
+                link.addEventListener('click', () => {
+                    const perfilNome = nameEl.textContent.trim();
+                    const perfilImagem = imgEl.src;
+
+                    localStorage.setItem('perfilAtivoNome', perfilNome);
+                    localStorage.setItem('perfilAtivoImagem', perfilImagem);
+                });
+            });
+        });
+    </script>
+
+    <!-- Script para gerenciar Dark Mode e Light Mode -->
+    <script src="theme.js"></script>
+</body>
+</html>

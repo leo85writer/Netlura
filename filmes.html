@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lista de filmes em destaque para assistir">
+    <title>Netflix - Lista de Filmes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="movies-page">
+    <header>
+        <!-- Ícone de alternância de tema (Dark/Light Mode) -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Ativar modo claro">☀️</button>
+        <h1>Filmes em destaque</h1>
+        <a class="movies-link" href="index.html">Voltar para perfis</a>
+    </header>
+
+    <main>
+        <section class="movies-tools" aria-labelledby="add-movie-title">
+            <h2 id="add-movie-title">Adicionar novo filme</h2>
+            <form id="movie-form" class="movie-form">
+                <div class="form-field">
+                    <label for="movie-title">Titulo do filme</label>
+                    <input id="movie-title" name="title" type="text" required maxlength="50" placeholder="Ex: Viagem Lunar">
+                </div>
+                <div class="form-field">
+                    <label for="movie-description">Descricao curta</label>
+                    <input id="movie-description" name="description" type="text" required maxlength="120" placeholder="Ex: Aventura espacial cheia de suspense.">
+                </div>
+                <button class="primary-button" type="submit">Adicionar filme</button>
+            </form>
+            <p id="movies-status" class="sr-only" aria-live="polite"></p>
+        </section>
+
+        <section class="movies-section" aria-labelledby="movies-title">
+            <h2 id="movies-title">Escolha um filme para assistir</h2>
+            <ul class="movies-list" id="movies-list">
+                <li class="movie-item">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 420'><rect width='300' height='420' fill='%2312151d'/><rect x='18' y='18' width='264' height='384' rx='18' fill='%23b20710'/><text x='50%25' y='44%25' text-anchor='middle' fill='white' font-size='34' font-family='Arial'>Cidade</text><text x='50%25' y='56%25' text-anchor='middle' fill='white' font-size='34' font-family='Arial'>Invisivel</text></svg>" alt="Pôster ilustrado do filme Cidade Invisível, com fundo vermelho e tipografia branca.">
+                    <h3>Cidade Invisível</h3>
+                    <p>Fantasia brasileira com mistério e criaturas lendárias em meio à cidade.</p>
+                    <div class="rating" role="group" aria-label="Classificar filme Cidade Invisível">
+                        <button type="button" class="star-button" data-rating="1" aria-label="Dar 1 estrela">☆</button>
+                        <button type="button" class="star-button" data-rating="2" aria-label="Dar 2 estrelas">☆</button>
+                        <button type="button" class="star-button" data-rating="3" aria-label="Dar 3 estrelas">☆</button>
+                        <button type="button" class="star-button" data-rating="4" aria-label="Dar 4 estrelas">☆</button>
+                        <button type="button" class="star-button" data-rating="5" aria-label="Dar 5 estrelas">☆</button>
+                    </div>
+                    <p class="rating-text" aria-live="polite">Sem avaliacao</p>
+                    <button class="remove-button" type="button">Remover filme</button>
+                </li>
+                <li class="movie-item">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 420'><rect width='300' height='420' fill='%230d1b2a'/><rect x='18' y='18' width='264' height='384' rx='18' fill='%23f77f00'/><text x='50%25' y='44%25' text-anchor='middle' fill='white' font-size='32' font-family='Arial'>Alem</text><text x='50%25' y='56%25' text-anchor='middle' fill='white' font-size='32' font-family='Arial'>do Horizonte</text></svg>" alt="Pôster ilustrado do filme Além do Horizonte, em tons de laranja e azul escuro.">
+                    <h3>Além do Horizonte</h3>
+                    <p>Uma aventura espacial sobre coragem, descoberta e novos começos.</p>
+                    <div class="rating" role="group" aria-label="Classificar filme Alem do Horizonte">
+                        <button type="button" class="star-button" data-rating="1" aria-label="Dar 1 estrela">☆</button>
+                        <button type="button" class="star-button" data-rating="2" aria-label="Dar 2 estrelas">☆</button>
+                        <button type="button" class="star-button" data-rating="3" aria-label="Dar 3 estrelas">☆</button>
+                        <button type="button" class="star-button" data-rating="4" aria-label="Dar 4 estrelas">☆</button>
+                        <button type="button" class="star-button" data-rating="5" aria-label="Dar 5 estrelas">☆</button>
+                    </div>
+                    <p class="rating-text" aria-live="polite">Sem avaliacao</p>
+                    <button class="remove-button" type="button">Remover filme</button>
+                </li>
+                <li class="movie-item">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 420'><rect width='300' height='420' fill='%231b263b'/><rect x='18' y='18' width='264' height='384' rx='18' fill='%232a9d8f'/><text x='50%25' y='44%25' text-anchor='middle' fill='white' font-size='30' font-family='Arial'>Noite</text><text x='50%25' y='56%25' text-anchor='middle' fill='white' font-size='30' font-family='Arial'>de Verao</text></svg>" alt="Pôster ilustrado do filme Noite de Verão, com composição em verde e azul.">
+                    <h3>Noite de Verão</h3>
+                    <p>Drama romântico sobre encontros inesperados durante uma noite inesquecível.</p>
+                    <div class="rating" role="group" aria-label="Classificar filme Noite de Verao">
+                        <button type="button" class="star-button" data-rating="1" aria-label="Dar 1 estrela">☆</button>
+                        <button type="button" class="star-button" data-rating="2" aria-label="Dar 2 estrelas">☆</button>
+                        <button type="button" class="star-button" data-rating="3" aria-label="Dar 3 estrelas">☆</button>
+                        <button type="button" class="star-button" data-rating="4" aria-label="Dar 4 estrelas">☆</button>
+                        <button type="button" class="star-button" data-rating="5" aria-label="Dar 5 estrelas">☆</button>
+                    </div>
+                    <p class="rating-text" aria-live="polite">Sem avaliacao</p>
+                    <button class="remove-button" type="button">Remover filme</button>
+                </li>
+                <li class="movie-item">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 420'><rect width='300' height='420' fill='%23111627'/><rect x='18' y='18' width='264' height='384' rx='18' fill='%236a4c93'/><text x='50%25' y='44%25' text-anchor='middle' fill='white' font-size='32' font-family='Arial'>Codigo</text><text x='50%25' y='56%25' text-anchor='middle' fill='white' font-size='32' font-family='Arial'>Final</text></svg>" alt="Pôster ilustrado do filme Código Final, com fundo roxo e texto branco centralizado.">
+                    <h3>Código Final</h3>
+                    <p>Suspense tecnológico com perseguições, segredos e uma grande conspiração.</p>
+                    <div class="rating" role="group" aria-label="Classificar filme Codigo Final">
+                        <button type="button" class="star-button" data-rating="1" aria-label="Dar 1 estrela">☆</button>
+                        <button type="button" class="star-button" data-rating="2" aria-label="Dar 2 estrelas">☆</button>
+                        <button type="button" class="star-button" data-rating="3" aria-label="Dar 3 estrelas">☆</button>
+                        <button type="button" class="star-button" data-rating="4" aria-label="Dar 4 estrelas">☆</button>
+                        <button type="button" class="star-button" data-rating="5" aria-label="Dar 5 estrelas">☆</button>
+                    </div>
+                    <p class="rating-text" aria-live="polite">Sem avaliacao</p>
+                    <button class="remove-button" type="button">Remover filme</button>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Script para gerenciar Dark Mode e Light Mode -->
+    <script src="theme.js"></script>
+    <!-- Script de filmes -->
+    <script src="filmes.js"></script>
+</body>
+</html>

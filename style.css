@@ -1,0 +1,845 @@
+/* Seleciona todos os elementos para aplicar reset global */
+* {
+    /* Remove margens padrão do navegador */
+    margin: 0;
+    /* Remove preenchimento interno padrão do navegador */
+    padding: 0;
+    /* Faz largura/altura incluir borda e padding no cálculo */
+    box-sizing: border-box;
+}
+
+/* Variáveis CSS para temas - padrão Dark Mode */
+:root {
+    /* Cor de fundo principal */
+    --bg-color: #000000;
+    /* Cor de texto principal */
+    --text-color: #ffffff;
+    /* Cor secundária (elementos auxiliares) */
+    --secondary-color: #1f2937;
+    /* Cor de borda */
+    --border-color: #444444;
+    /* Cor de destaque/acento */
+    --accent-color: #b20710;
+}
+
+/* Estiliza o corpo principal da página */
+body {
+    /* Define fundo usando variável CSS */
+    background-color: var(--bg-color);
+    /* Define texto usando variável CSS */
+    color: var(--text-color);
+    /* Define pilha de fontes preferenciais */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* Ativa Flexbox no body */
+    display: flex;
+    /* Organiza os elementos em coluna */
+    flex-direction: column;
+    /* Centraliza itens horizontalmente */
+    align-items: center;
+    /* Centraliza itens verticalmente */
+    justify-content: center;
+    /* Garante altura mínima igual à altura da viewport */
+    min-height: 100vh;
+    /* Cria espaçamento interno nas bordas da página */
+    padding: 20px;
+    /* Transição suave para mudanças de cores */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estiliza o cabeçalho */
+header {
+    /* Adiciona espaço abaixo do cabeçalho */
+    margin-bottom: 50px;
+    /* Centraliza texto do cabeçalho */
+    text-align: center;
+    /* Posição relativa para botão de tema */
+    position: relative;
+}
+
+/* Ícone de alternância de tema */
+.theme-toggle {
+    /* Posição fixa no canto superior direito da tela */
+    position: fixed;
+    /* Distância do topo */
+    top: 20px;
+    /* Distância da direita */
+    right: 20px;
+    /* Fundo transparente */
+    background-color: transparent;
+    /* Texto baseado na cor do texto */
+    color: var(--text-color);
+    /* Remove borda padrão */
+    border: none;
+    /* Padding interno mínimo */
+    padding: 8px;
+    /* Tamanho grande do ícone */
+    font-size: 1.5rem;
+    /* Cursor de clique */
+    cursor: pointer;
+    /* Transição suave */
+    transition: all 0.3s ease;
+    /* Z-index alto para ficar acima de outros elementos */
+    z-index: 1000;
+    /* Cantos arredondados sutis */
+    border-radius: 8px;
+}
+
+/* Hover no ícone de tema */
+.theme-toggle:hover {
+    /* Fundo semi-transparente */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Leve transformação */
+    transform: scale(1.1);
+}
+
+/* Foco visível no ícone */
+.theme-toggle:focus-visible {
+    /* Contorno de foco */
+    outline: 2px solid #f77f00;
+    /* Distância do contorno */
+    outline-offset: 2px;
+}
+
+/* Estiliza título principal */
+h1 {
+    /* Define tamanho grande para o título */
+    font-size: 3rem;
+    /* Define peso da fonte mais leve */
+    font-weight: 400;
+    /* Ajusta espaçamento entre letras para ficar mais compacto */
+    letter-spacing: -0.05em;
+}
+
+/* Estiliza link para página de filmes */
+.movies-link {
+    /* Permite aplicar dimensões e margens como bloco em linha */
+    display: inline-block;
+    /* Espaço acima do link */
+    margin-top: 18px;
+    /* Cor do texto do link */
+    color: #fff;
+    /* Remove sublinhado padrão */
+    text-decoration: none;
+    /* Tamanho do texto */
+    font-size: 1rem;
+    /* Borda cinza suave */
+    border: 1px solid #444;
+    /* Espaçamento interno vertical e horizontal */
+    padding: 10px 18px;
+    /* Borda totalmente arredondada (formato pílula) */
+    border-radius: 999px;
+    /* Anima mudanças de fundo e borda */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Estilo quando o link é hoverado */
+.movies-link:hover,
+/* Estilo quando o link recebe foco visível (acessibilidade) */
+.movies-link:focus-visible {
+    /* Fundo vermelho no estado ativo */
+    background-color: #b20710;
+    /* Borda vermelha no estado ativo */
+    border-color: #b20710;
+}
+
+/* Estiliza área principal do conteúdo */
+main {
+    /* Ativa Flexbox */
+    display: flex;
+    /* Empilha os blocos em coluna */
+    flex-direction: column;
+    /* Centraliza itens no eixo horizontal */
+    align-items: center;
+    /* Espaço vertical entre blocos internos */
+    gap: 56px;
+    /* Ocupa toda a largura disponível */
+    width: 100%;
+    /* Limita largura máxima para não esticar demais em telas grandes */
+    max-width: 1200px;
+}
+
+/* Estiliza seção que contém os perfis */
+.profiles {
+    /* Exibe perfis em Flexbox */
+    display: flex;
+    /* Espaço entre os cards de perfil */
+    gap: 40px;
+    /* Permite quebrar linha em telas menores */
+    flex-wrap: wrap;
+    /* Centraliza cards na linha */
+    justify-content: center;
+}
+
+/* Estilo base de cada card de perfil */
+.profile {
+    /* Centraliza conteúdo interno */
+    text-align: center;
+    /* Cursor de clique para indicar interação */
+    cursor: pointer;
+    /* Suaviza animação de transformação */
+    transition: transform 0.3s ease;
+}
+
+/* Estiliza link que envolve cada perfil */
+.profile-link {
+    /* Herda cor do texto do elemento pai */
+    color: inherit;
+    /* Remove sublinhado do link */
+    text-decoration: none;
+    /* Faz link ocupar área total do card */
+    display: block;
+}
+
+/* Efeito de aumento ao passar mouse no perfil */
+.profile:hover {
+    /* Escala o card em 5% */
+    transform: scale(1.05);
+}
+
+/* Remove margem padrão do figure */
+figure {
+    /* Zera margem externa */
+    margin: 0;
+}
+
+/* Estiliza imagem de perfil */
+.profile img {
+    /* Largura fixa da imagem */
+    width: 150px;
+    /* Altura fixa da imagem */
+    height: 150px;
+    /* Cantos arredondados */
+    border-radius: 8px;
+    /* Cobre área sem distorcer (pode cortar) */
+    object-fit: cover;
+    /* Borda inicial invisível para evitar salto no hover */
+    border: 3px solid transparent;
+    /* Suaviza troca de cor da borda */
+    transition: border-color 0.3s ease;
+}
+
+/* Borda branca ao passar mouse sobre o card */
+.profile:hover img {
+    /* Define cor da borda no hover */
+    border-color: #fff;
+}
+
+/* Estiliza legenda do perfil */
+figcaption {
+    /* Espaço acima do texto */
+    margin-top: 10px;
+    /* Tamanho da fonte da legenda */
+    font-size: 1.2rem;
+    /* Peso mais fino para visual leve */
+    font-weight: 300;
+}
+
+/* Bloco visual da seção de filmes */
+.movies-section {
+    /* Ocupa toda a largura disponível do container */
+    width: 100%;
+    /* Fundo com gradiente diagonal escuro */
+    background: linear-gradient(135deg, #111827, #1f2937);
+    /* Arredonda cantos do bloco */
+    border-radius: 24px;
+    /* Espaço interno */
+    padding: 36px;
+    /* Fonte serifada para destacar essa área */
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* Ajuste específico de layout para página de filmes */
+.movies-page {
+    /* Alinha conteúdo ao topo em vez de centralizar verticalmente */
+    justify-content: flex-start;
+}
+
+/* Painel das ferramentas/formulário de filmes */
+.movies-tools {
+    /* Largura total do container pai */
+    width: 100%;
+    /* Gradiente de fundo com tons vinho/escuros */
+    background: linear-gradient(145deg, #140f14, #241824);
+    /* Borda sutil roxa */
+    border: 1px solid #4a2f4a;
+    /* Cantos arredondados */
+    border-radius: 18px;
+    /* Espaço interno */
+    padding: 24px;
+}
+
+/* Título do painel de ferramentas */
+.movies-tools h2 {
+    /* Espaço abaixo do título */
+    margin-bottom: 16px;
+    /* Tamanho do subtítulo */
+    font-size: 1.5rem;
+}
+
+/* Layout do formulário de adicionar filme */
+.movie-form {
+    /* Usa grid para organizar campos */
+    display: grid;
+    /* Duas colunas flexíveis e uma auto para botão */
+    grid-template-columns: 1fr 1fr auto;
+    /* Espaço entre células */
+    gap: 14px;
+    /* Alinha itens pelo final vertical (base dos campos) */
+    align-items: end;
+}
+
+/* Grupo de cada campo do formulário */
+.form-field {
+    /* Exibe label e input em coluna */
+    display: flex;
+    /* Direção vertical */
+    flex-direction: column;
+    /* Espaço entre label e input */
+    gap: 8px;
+}
+
+/* Label dos campos */
+.form-field label {
+    /* Tamanho da fonte do rótulo */
+    font-size: 0.95rem;
+}
+
+/* Input dos campos */
+.form-field input {
+    /* Fundo escuro do input */
+    background-color: #0f0f13;
+    /* Texto claro */
+    color: #fff;
+    /* Borda cinza */
+    border: 1px solid #4b5563;
+    /* Arredonda cantos */
+    border-radius: 10px;
+    /* Espaço interno do input */
+    padding: 10px 12px;
+    /* Tamanho do texto digitado */
+    font-size: 1rem;
+}
+
+/* Placeholder dos inputs */
+.form-field input::placeholder {
+    /* Cor do texto de dica */
+    color: #9ca3af;
+}
+
+/* Estado de foco acessível nos inputs */
+.form-field input:focus-visible {
+    /* Contorno laranja para foco visível */
+    outline: 2px solid #f77f00;
+    /* Distância do contorno para não colar no input */
+    outline-offset: 2px;
+}
+
+/* Estilos compartilhados entre botão principal e botão remover */
+.primary-button,
+.remove-button {
+    /* Borda inicial transparente */
+    border: 1px solid transparent;
+    /* Arredondamento dos botões */
+    border-radius: 10px;
+    /* Espaçamento interno */
+    padding: 10px 14px;
+    /* Tamanho do texto */
+    font-size: 0.95rem;
+    /* Texto em negrito */
+    font-weight: 700;
+    /* Cursor de clique */
+    cursor: pointer;
+    /* Transições suaves para interação */
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Estilo do botão principal */
+.primary-button {
+    /* Fundo vermelho Netflix */
+    background-color: #b20710;
+    /* Texto branco */
+    color: #fff;
+}
+
+/* Hover no botão principal */
+.primary-button:hover,
+/* Foco visível no botão principal */
+.primary-button:focus-visible {
+    /* Fundo vermelho mais claro */
+    background-color: #d50914;
+    /* Leve deslocamento para cima */
+    transform: translateY(-1px);
+}
+
+/* Estilo do botão de remover filme */
+.remove-button {
+    /* Espaço acima do botão */
+    margin-top: 12px;
+    /* Fundo semitransparente escuro */
+    background-color: rgba(15, 23, 42, 0.75);
+    /* Cor do texto clara */
+    color: #f9fafb;
+    /* Borda clara translúcida */
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Hover no botão remover */
+.remove-button:hover,
+/* Foco visível no botão remover */
+.remove-button:focus-visible {
+    /* Borda vermelha de alerta */
+    border-color: #ef4444;
+    /* Fundo vermelho translúcido */
+    background-color: rgba(239, 68, 68, 0.16);
+}
+
+/* Título da seção de filmes */
+.movies-section h2 {
+    /* Tamanho do título */
+    font-size: 2rem;
+    /* Espaço abaixo do título */
+    margin-bottom: 24px;
+    /* Centraliza o texto */
+    text-align: center;
+}
+
+/* Lista de filmes */
+.movies-list {
+    /* Remove marcadores de lista */
+    list-style: none;
+    /* Exibe itens em grid */
+    display: grid;
+    /* Cria colunas adaptáveis com mínimo de 220px */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* Espaço entre cards */
+    gap: 24px;
+}
+
+/* Card individual de filme */
+.movie-item {
+    /* Fundo claro translúcido */
+    background-color: rgba(255, 255, 255, 0.06);
+    /* Borda clara translúcida */
+    border: 2px solid rgba(255, 255, 255, 0.14);
+    /* Cantos arredondados */
+    border-radius: 18px;
+    /* Espaço interno do card */
+    padding: 18px;
+    /* Animação suave para hover/foco */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover no card */
+.movie-item:hover,
+/* Estado quando algum elemento interno recebe foco */
+.movie-item:focus-within {
+    /* Eleva visualmente o card */
+    transform: translateY(-6px);
+    /* Destaca borda em laranja */
+    border-color: #f77f00;
+    /* Sombra para profundidade */
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+}
+
+/* Poster dentro do card */
+.movie-item img {
+    /* Largura total do card */
+    width: 100%;
+    /* Altura fixa do poster */
+    height: 300px;
+    /* Ajusta imagem sem distorção */
+    object-fit: cover;
+    /* Cantos arredondados da imagem */
+    border-radius: 12px;
+    /* Garante comportamento de bloco */
+    display: block;
+    /* Espaço abaixo da imagem */
+    margin-bottom: 16px;
+}
+
+/* Título do filme no card */
+.movie-item h3 {
+    /* Tamanho do título */
+    font-size: 1.4rem;
+    /* Espaço abaixo do título */
+    margin-bottom: 10px;
+}
+
+/* Descrição do filme no card */
+.movie-item p {
+    /* Cor do texto da descrição */
+    color: #e5e7eb;
+    /* Altura de linha para leitura confortável */
+    line-height: 1.5;
+    /* Tamanho da fonte da descrição */
+    font-size: 1rem;
+}
+
+/* Container das estrelas de avaliação */
+.rating {
+    /* Espaço acima do bloco de estrelas */
+    margin-top: 14px;
+    /* Organiza estrelas em linha */
+    display: flex;
+    /* Espaçamento entre estrelas */
+    gap: 6px;
+}
+
+/* Botão de estrela */
+.star-button {
+    /* Borda inicial cinza */
+    border: 1px solid #4b5563;
+    /* Fundo transparente */
+    background-color: transparent;
+    /* Cor inicial da estrela */
+    color: #d1d5db;
+    /* Largura fixa do botão */
+    width: 36px;
+    /* Altura fixa do botão */
+    height: 36px;
+    /* Cantos arredondados */
+    border-radius: 9px;
+    /* Tamanho do ícone estrela */
+    font-size: 1.3rem;
+    /* Cursor de clique */
+    cursor: pointer;
+    /* Animações suaves de interação */
+    transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Hover da estrela */
+.star-button:hover,
+/* Foco visível da estrela */
+.star-button:focus-visible {
+    /* Move levemente para cima */
+    transform: translateY(-1px);
+    /* Destaca borda em amarelo */
+    border-color: #f59e0b;
+}
+
+/* Estado ativo da estrela (selecionada) */
+.star-button.active {
+    /* Cor amarela da estrela ativa */
+    color: #f59e0b;
+    /* Borda amarela da estrela ativa */
+    border-color: #f59e0b;
+}
+
+/* Texto que mostra avaliação numérica */
+.rating-text {
+    /* Espaço acima do texto */
+    margin-top: 10px;
+    /* Cor cinza clara */
+    color: #d1d5db;
+    /* Tamanho de fonte menor */
+    font-size: 0.95rem;
+}
+
+/* Classe utilitária para esconder visualmente e manter acessibilidade */
+.sr-only {
+    /* Posicionamento absoluto para retirar do fluxo */
+    position: absolute;
+    /* Largura mínima para manter leitura por leitor de tela */
+    width: 1px;
+    /* Altura mínima para manter leitura por leitor de tela */
+    height: 1px;
+    /* Remove padding */
+    padding: 0;
+    /* Ajuste de margem para esconder visualmente */
+    margin: -1px;
+    /* Esconde qualquer overflow */
+    overflow: hidden;
+    /* Recorta elemento para não aparecer */
+    clip: rect(0, 0, 0, 0);
+    /* Remove borda */
+    border: 0;
+}
+
+/* Foco visível padrão para links */
+a:focus-visible,
+/* Foco visível padrão para botões */
+button:focus-visible {
+    /* Contorno amarelo para navegação por teclado */
+    outline: 2px solid #f59e0b;
+    /* Distância do contorno */
+    outline-offset: 2px;
+}
+
+/* Ajustes responsivos para telas até 1024px */
+@media (max-width: 1024px) {
+    /* Formulário vira coluna única */
+    .movie-form {
+        /* Uma coluna ocupando toda a largura */
+        grid-template-columns: 1fr;
+    }
+
+    /* Botão principal ocupa largura total */
+    .primary-button {
+        /* Largura de 100% no mobile/tablet */
+        width: 100%;
+    }
+}
+
+/* Ajustes responsivos para telas até 768px */
+@media (max-width: 768px) {
+    /* Reduz tamanho do título principal */
+    h1 {
+        /* Fonte menor para caber em telas médias */
+        font-size: 2rem;
+    }
+
+    /* Reduz espaço entre perfis */
+    .profiles {
+        /* Gap menor entre cards */
+        gap: 20px;
+    }
+
+    /* Diminui dimensões das imagens de perfil */
+    .profile img {
+        /* Nova largura para tela menor */
+        width: 120px;
+        /* Nova altura para tela menor */
+        height: 120px;
+    }
+
+    /* Reduz padding da seção de filmes */
+    .movies-section {
+        /* Espaço interno menor */
+        padding: 24px;
+    }
+
+    /* Reduz título da seção de filmes */
+    .movies-section h2 {
+        /* Fonte ajustada para telas menores */
+        font-size: 1.6rem;
+    }
+
+    /* Ajusta largura mínima das colunas do grid */
+    .movies-list {
+        /* Colunas menores para caber mais facilmente */
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    }
+
+    /* Reduz altura do poster */
+    .movie-item img {
+        /* Altura menor para proporção em telas menores */
+        height: 260px;
+    }
+}
+
+/* Ajustes responsivos para telas até 480px */
+@media (max-width: 480px) {
+    /* Reduz padding de blocos principais em celular pequeno */
+    .movies-section,
+    .movies-tools {
+        /* Menor espaçamento interno */
+        padding: 18px;
+    }
+
+    /* Reduz padding dos cards de filme */
+    .movie-item {
+        /* Espaço interno compacto */
+        padding: 14px;
+    }
+
+    /* Reduz ainda mais altura do poster */
+    .movie-item img {
+        /* Altura menor para telas estreitas */
+        height: 220px;
+    }
+
+    /* Diminui espaço entre estrelas */
+    .rating {
+        /* Gap menor entre botões de avaliação */
+        gap: 4px;
+    }
+
+    /* Diminui tamanho dos botões de estrela */
+    .star-button {
+        /* Largura menor */
+        width: 32px;
+        /* Altura menor */
+        height: 32px;
+    }
+}
+
+/* ============================================
+   ESTILOS PARA LIGHT MODE
+   ============================================ */
+
+/* Tema claro - Variáveis CSS para light theme */
+.light-theme {
+    /* Cores específicas para modo claro */
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --secondary-color: #f3f4f6;
+    --border-color: #e5e7eb;
+    --accent-color: #dc2626;
+}
+
+/* Ajustes adicionais para light mode */
+.light-theme .movies-link {
+    /* Borda cinza clara no modo light */
+    border-color: #d1d5db;
+    /* Texto escuro */
+    color: #000000;
+}
+
+.light-theme .movies-link:hover,
+.light-theme .movies-link:focus-visible {
+    /* Vermelho mais vivo no light mode */
+    background-color: #dc2626;
+    /* Borda vermelha */
+    border-color: #dc2626;
+    /* Texto branco no hover */
+    color: #ffffff;
+}
+
+.light-theme .profile:hover img {
+    /* Borda preta no hover - light mode */
+    border-color: #000000;
+}
+
+.light-theme .movies-section {
+    /* Gradiente claro para light mode */
+    background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+    /* Borda cinza clara */
+    border: 1px solid #e5e7eb;
+}
+
+.light-theme .movies-tools {
+    /* Gradiente claro para formulário */
+    background: linear-gradient(145deg, #ffffff, #f9fafb);
+    /* Borda cinza clara */
+    border: 1px solid #e5e7eb;
+}
+
+.light-theme .form-field input {
+    /* Fundo claro para inputs */
+    background-color: #f9fafb;
+    /* Texto escuro */
+    color: #000000;
+    /* Borda cinza */
+    border-color: #d1d5db;
+}
+
+.light-theme .form-field input::placeholder {
+    /* Placeholder cinza */
+    color: #6b7280;
+}
+
+.light-theme .form-field input:focus-visible {
+    /* Contorno em vermelho no light mode */
+    outline-color: #dc2626;
+}
+
+.light-theme .primary-button {
+    /* Vermelho mais vivo no light mode */
+    background-color: #dc2626;
+    /* Texto branco */
+    color: #ffffff;
+}
+
+.light-theme .primary-button:hover,
+.light-theme .primary-button:focus-visible {
+    /* Vermelho mais claro on hover */
+    background-color: #ef4444;
+}
+
+.light-theme .remove-button {
+    /* Fundo claro translúcido */
+    background-color: rgba(0, 0, 0, 0.06);
+    /* Texto escuro */
+    color: #1f2937;
+    /* Borda cinza */
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+.light-theme .remove-button:hover,
+.light-theme .remove-button:focus-visible {
+    /* Borda vermelha */
+    border-color: #dc2626;
+    /* Fundo vermelho translúcido */
+    background-color: rgba(220, 38, 38, 0.1);
+}
+
+.light-theme .movie-item {
+    /* Fundo claro translúcido */
+    background-color: rgba(0, 0, 0, 0.04);
+    /* Borda cinza clara */
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .movie-item:hover,
+.light-theme .movie-item:focus-within {
+    /* Borda vermelha */
+    border-color: #dc2626;
+    /* Sombra adaptada */
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .movie-item p {
+    /* Texto cinza escuro */
+    color: #4b5563;
+}
+
+.light-theme .star-button {
+    /* Borda cinza */
+    border-color: #d1d5db;
+    /* Texto cinza */
+    color: #6b7280;
+}
+
+.light-theme .star-button:hover,
+.light-theme .star-button:focus-visible {
+    /* Borda laranja */
+    border-color: #f59e0b;
+}
+
+.light-theme .star-button.active {
+    /* Cor amarela */
+    color: #f59e0b;
+    /* Borda amarela */
+    border-color: #f59e0b;
+}
+
+.light-theme .rating-text {
+    /* Texto cinza escuro */
+    color: #6b7280;
+}
+
+.light-theme a:focus-visible,
+.light-theme button:focus-visible {
+    /* Contorno em vermelho no light mode */
+    outline-color: #dc2626;
+}
+
+/* ============================================
+   RESPONSIVIDADE PARA O ÍCONE DE TEMA
+   ============================================ */
+
+/* Ajustes para telas até 768px */
+@media (max-width: 768px) {
+    .theme-toggle {
+        /* Posição ajustada para mobile */
+        top: 15px;
+        right: 15px;
+        /* Ícone menor */
+        font-size: 1.3rem;
+        /* Padding menor */
+        padding: 6px;
+    }
+}
+
+/* Ajustes para telas até 480px */
+@media (max-width: 480px) {
+    .theme-toggle {
+        /* Posição mais próxima das bordas */
+        top: 10px;
+        right: 10px;
+        /* Ícone ainda menor */
+        font-size: 1.2rem;
+        /* Padding mínimo */
+        padding: 5px;
+    }
+}
