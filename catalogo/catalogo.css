@@ -447,20 +447,44 @@ a:hover {
 }
 
 /* Mobile adjustments */
+/* Mobile adjustments */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
     }
 
+    /* Transformando a linha em uma grade de 2 colunas */
+    .movie-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Duas colunas iguais */
+        gap: 10px; /* Espaçamento entre os vídeos */
+        overflow-x: hidden; /* Remove o scroll horizontal no celular */
+        padding: 10px 4%;
+        margin: 0;
+    }
+
     .movie-card {
-        min-width: 200px;
-        width: 200px;
-        height: 112px;
+        min-width: unset; /* Remove a largura mínima fixa */
+        width: 100%;      /* Faz o card ocupar a largura da coluna do grid */
+        height: auto;     /* Deixa a altura proporcional */
+        aspect-ratio: 16 / 9; /* Mantém o formato wide de vídeo */
+    }
+
+    /* Desabilitando o efeito de escala (zoom) no celular */
+    /* Em telas touch, o hover pode causar bugs visuais e esconder outros cards */
+    .movie-card:hover {
+        transform: none; 
+        z-index: 1;
+    }
+
+    .movie-card:hover .card-details {
+        display: none; /* Esconde os detalhes no hover para não sobrepor o grid no mobile */
     }
 
     .slider-title {
-        font-size: 4vw;
-        line-height: 4.5vw;
+        font-size: 5vw; /* Aumenta um pouco o título para ler melhor no celular */
+        line-height: 6vw;
+        margin-left: 4%;
     }
 }
 
